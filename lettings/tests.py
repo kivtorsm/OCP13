@@ -95,3 +95,10 @@ def test_lettings_detail_view(client):
     assert response.status_code == 200
     assert expected_content in content
     assertTemplateUsed(response, "lettings/letting.html")
+
+
+@pytest.mark.django_db
+def test_500(client):
+    response = client.get("/lettings/1/")
+    assert response.status_code == 500
+    assert "How-to-Fix-500-Internal-Server-Error.png" in response.content.decode()
