@@ -95,5 +95,3 @@ def test_lettings_detail_view(client):
     assert response.status_code == 200
     assert expected_content in content
     assertTemplateUsed(response, "lettings/letting.html")
-
-
