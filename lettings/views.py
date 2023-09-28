@@ -3,7 +3,7 @@ Lettings app views:
     - Index : listing of lettings
     - Letting : letting details
 """
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from lettings.models import Letting
 
 
@@ -25,7 +25,7 @@ def letting(request, letting_id):
     :param letting_id: letting identification for a letting
     :return: render of the request with the letting detail template and the context (title, address)
     """
-    letting = Letting.objects.get(id=letting_id)
+    letting = get_object_or_404(Letting, id=letting_id)
     context = {
         'title': letting.title,
         'address': letting.address,

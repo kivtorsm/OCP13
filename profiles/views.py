@@ -3,7 +3,7 @@ PRofiles app views:
     - Index : listing of profiles
     - Letting : profile details
 """
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from profiles.models import Profile
 
@@ -26,6 +26,6 @@ def profile(request, username):
     :param username: username string needed to look for a profile and show details
     :return: render of the request with the profile detail template and the context (profile)
     """
-    profile = Profile.objects.get(user__username=username)
+    profile = get_object_or_404(Profile, user__username=username)
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)
