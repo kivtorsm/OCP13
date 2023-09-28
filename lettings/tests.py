@@ -6,7 +6,7 @@ Test module with all lettings app tests:
     - test_address_model
     - test_letting_detail_url
     - test_lettings_detail_view
-    - test_500
+    - test_404
 """
 
 import pytest
@@ -146,7 +146,7 @@ def test_lettings_detail_view(client):
 
 
 @pytest.mark.django_db
-def test_500(client):
+def test_404(client):
     """
     Tests error 500 personalized page
         - Status code 500
@@ -154,5 +154,5 @@ def test_500(client):
     :return: none
     """
     response = client.get("/lettings/1/")
-    assert response.status_code == 500
-    assert "How-to-Fix-500-Internal-Server-Error.png" in response.content.decode()
+    assert response.status_code == 404
+    assert "oops-erreur-404-illustration-concept-robot-casse_114360-5529.avif" in response.content.decode()
