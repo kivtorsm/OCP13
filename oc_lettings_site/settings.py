@@ -3,6 +3,9 @@ oc_lettings_site settings
 """
 import os
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -121,3 +124,23 @@ STATICFILES_DIRS = [BASE_DIR / "static", ]
 
 # Default model ID
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# Sentry Parameters
+sentry_sdk.init(
+    dsn="https://b55de49c0f6e78af1db824b1ca258c12@o4505799371128832.ingest.sentry.io/4505956744036352",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+    integrations=[
+        DjangoIntegration(
+            transaction_style='url',
+            middleware_spans=True,
+            signals_spans=False,
+            cache_spans=False,
+        ),
+    ],
+)
