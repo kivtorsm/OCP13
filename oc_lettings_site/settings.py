@@ -2,11 +2,19 @@
 oc_lettings_site settings
 """
 import os
+import logging
+import environ
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
 
 from pathlib import Path
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'request_logging.middleware.LoggingMiddleware',
 ]
 
 ROOT_URLCONF = 'oc_lettings_site.urls'
@@ -127,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Sentry Parameters
 sentry_sdk.init(
-    dsn="https://b55de49c0f6e78af1db824b1ca258c12@o4505799371128832.ingest.sentry.io/4505956744036352",
+    dsn=env('SENTRY_DSN'),
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.
     traces_sample_rate=1.0,
@@ -142,5 +151,32 @@ sentry_sdk.init(
             signals_spans=False,
             cache_spans=False,
         ),
+        LoggingIntegration(
+            level=logging.INFO,        # Capture info and above as breadcrumbs
+            event_level=logging.ERROR  # Send errors as events
+        ),
     ],
 )
+
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # change debug level as appropiate
+            'propagate': False,
+        },
+    },
+}
+
+REQUEST_LOGGING_ENABLE_COLORIZE = False
+
+
