@@ -1,3 +1,8 @@
+"""
+PRofiles app views:
+    - Index : listing of profiles
+    - Letting : profile details
+"""
 from django.shortcuts import render
 
 from profiles.models import Profile

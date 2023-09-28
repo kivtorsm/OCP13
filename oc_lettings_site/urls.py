@@ -1,3 +1,10 @@
+"""
+Urls module for main oc_lettings_site app:
+    - Homepage
+    - admin
+"""
+
+
 from django.contrib import admin
 from django.urls import path, include
 

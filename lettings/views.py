@@ -1,3 +1,8 @@
+"""
+Lettings app views:
+    - Index : listing of lettings
+    - Letting : letting details
+"""
 from django.shortcuts import render
 from lettings.models import Letting
 

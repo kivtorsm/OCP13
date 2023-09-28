@@ -1,3 +1,10 @@
+"""
+Urls module for lettings app:
+    - Lettings listing
+    - Letting detail
+"""
+
+
 from django.urls import path
 
 from lettings import views

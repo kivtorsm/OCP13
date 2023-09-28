@@ -1,3 +1,10 @@
+"""
+OCLettingsSite apps module.
+
+    OCLettingsSiteConfig main app class
+"""
+
+
 from django.apps import AppConfig
 
 

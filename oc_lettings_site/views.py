@@ -1,3 +1,8 @@
+"""
+oc_lettings_site app views :
+    - Index :
+        Homepage
+"""
 from django.shortcuts import render
 
 

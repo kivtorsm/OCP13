@@ -1,3 +1,10 @@
+"""
+Urls module for profiles app:
+    - Profiles listing
+    - Profile detail
+"""
+
+
 from django.urls import path
 
 from profiles import views

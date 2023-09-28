@@ -1,3 +1,6 @@
+"""
+oc_lettings_site settings
+"""
 import os
 
 from pathlib import Path

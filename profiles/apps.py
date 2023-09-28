@@ -1,3 +1,10 @@
+"""
+Profiles apps module.
+
+    ProfilesConfig class
+"""
+
+
 from django.apps import AppConfig
 
 
