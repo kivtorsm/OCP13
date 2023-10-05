@@ -35,19 +35,21 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'oc_lettings_site.apps.OCLettingsSiteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oc_lettings_site.apps.OCLettingsSiteConfig',
     'lettings',
     'profiles',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # <---- WhiteNoise!
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -88,7 +90,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -128,7 +129,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static", ]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage' # --> DEV
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # --> PROD
 
 
 # Default model ID

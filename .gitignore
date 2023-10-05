@@ -2,4 +2,4 @@
 *.pyc
 env
 .idea
-.env
+oc_lettings_site/.env
