@@ -13,10 +13,10 @@ jobs:
         run: sudo apt install python3-pip
       - name: Install requirements
         run: pip install -r requirements.txt
+      - name: Check linting
+        run: flake8
       - name: Execute tests
         env:
           SENTRY_DSN: ${{ env.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
-        run: |
-          python manage.py collectstatic --noinput
-          pytest
+        run: pytest
