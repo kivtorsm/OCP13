@@ -13,8 +13,11 @@ jobs:
         run: sudo apt install python3-pip
       - name: Install requirements
         run: pip install -r requirements.txt
+      - name: Load environment variables
+        uses: dotenv-actions/setup-dotenv@v2
+        with:
+         dotenv_path: .env
       - name: Execute tests
         env:
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
         run: pytest
