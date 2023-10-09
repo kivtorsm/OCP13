@@ -16,4 +16,5 @@ jobs:
       - name: Execute tests
         env:
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
+          super_secret: ${{ secrets.SENTRY_DSN }}
         run: pytest
