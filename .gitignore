@@ -3,3 +3,7 @@
 env
 .idea
 oc_lettings_site/.env
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
