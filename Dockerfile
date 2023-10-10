@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /usr/src/app
-RUN python manage.py collectstatic --noinput
+RUN #python manage.py collectstatic --noinput
 
 #EXPOSE 8000
 #   \1111\  \\\\1\1
