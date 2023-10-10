@@ -1,27 +1,27 @@
 version: '3.8'
 
-#services:
-#  web:
-#    build: .
-#    container_name: p13_python_oc
-#    command: gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:8000
-#    ports:
-#      - 8000:8000
-##    expose:
-##      - 8000
-#    volumes:
-##      - .:/app
-#      - /static:/static
-##    networks:
-##      - nginx_network
-##    env_file: .env
-
 services:
-  app:
-    image: kivtor/ocp13:v0.0.1
-    container_name: ocp13
-    restart: always
+  web:
+    build: .
+    container_name: p13_python_oc
+    command: gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:8000
     ports:
-      - "80:3000"
-    environment:
-      NODE_ENV: production
+      - 8000:8000
+#    expose:
+#      - 8000
+    volumes:
+#      - .:/app
+      - /static:/static
+#    networks:
+#      - nginx_network
+#    env_file: .env
+
+#services:
+#  app:
+#    image: kivtor/ocp13:v0.0.1
+#    container_name: ocp13
+#    restart: always
+#    ports:
+#      - "80:3000"
+#    environment:
+#      NODE_ENV: production
