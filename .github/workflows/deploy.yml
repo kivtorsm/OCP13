@@ -34,4 +34,5 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/ocp13/
-            docker-compose -f docker-compose.prod.yml up -d --build
+            docker pull kivtor/ocp13:v0.0.1
+            docker-compose up
