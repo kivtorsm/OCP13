@@ -13,4 +13,4 @@ services:
       - /static:/static
 #    networks:
 #      - nginx_network
-    env_file: app/ocp13/oc_lettings_site/.env
+    env_file: .env

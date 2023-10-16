@@ -35,4 +35,5 @@ jobs:
           script: |
             cd /home/ubuntu/ocp13/
             docker pull kivtor/ocp13:v0.0.1
+            cd ocp13
             docker-compose up
