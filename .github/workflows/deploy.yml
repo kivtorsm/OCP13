@@ -34,5 +34,5 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/
-            docker pull kivtor/ocp13:v0.0.1
+            docker pull kivtor/ocp13:latest
             docker-compose up

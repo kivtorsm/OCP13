@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: kivtor/ocp13:v0.0.1
+    image: kivtor/ocp13:latest
     command: gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:8000
     ports:
       - 8000:8000
