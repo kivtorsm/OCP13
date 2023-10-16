@@ -35,4 +35,4 @@ jobs:
           script: |
             cd /home/ubuntu/
             docker pull kivtor/ocp13:latest
-            docker-compose up
+            docker-compose up -d
