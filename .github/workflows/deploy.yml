@@ -33,6 +33,6 @@ jobs:
           key: ${{ secrets.OVH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /home/ubuntu/ocp13/
+            cd /home/ubuntu/
             docker pull kivtor/ocp13:v0.0.1
             docker-compose up
