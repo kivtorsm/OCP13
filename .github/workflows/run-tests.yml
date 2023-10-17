@@ -22,9 +22,9 @@ jobs:
         env:
           SENTRY_DSN: ${{ env.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
-        run: pytest
+        run: pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=app tests/ | tee pytest-coverage.txt
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml  # enabled workflow
+          junitxml-path: ./pytest.xml
