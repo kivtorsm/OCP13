@@ -30,7 +30,7 @@ jobs:
         env:
           SENTRY_DSN: ${{ env.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
-        run: pytest --junitxml=junit.xml
+        run: pytest
       - name: Get Line Rate from output
         id: get_line_rate
         shell: pwsh
