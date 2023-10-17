@@ -41,6 +41,9 @@ jobs:
           [xml]$covxml = Get-Content -Path $covreport.FullName
           $lineRate = $covxml.coverage.'line-rate'
           Write-Output "::set-output name=lineRate::$lineRate"
+      - name: Print line rate
+        run: |
+          echo "${{ steps.get_line_rate.outputs.lineRate }}"
       - name: Check coverage tolerance
         if: ${{ steps.get_line_rate.outputs.lineRate < 0.8 }}
         uses: actions/github-script@v3
