@@ -3,3 +3,8 @@ omit =
     # omit anything in a .local directory anywhere
     */tests.py
 relative_files = true
+
+[paths]
+source =
+    */OCP13/
+    *\OCP13\
