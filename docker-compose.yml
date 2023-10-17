@@ -14,3 +14,11 @@ services:
 #    networks:
 #      - nginx_network
 #    env_file: .env
+
+  nginx:
+      build:
+        context: ./nginx
+      ports:
+        - 80:80
+      depends_on:
+        - web
