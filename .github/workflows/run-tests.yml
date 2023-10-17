@@ -14,10 +14,6 @@ jobs:
         run: sudo apt install python3-pip
       - name: Install requirements
         run: pip install -r requirements.txt
-  execute_tests:
-    name: Execute tests and control test coverage
-    runs-on: ubuntu-latest
-    steps:
       - name: Check linting
         run: flake8
       - name: Execute tests
