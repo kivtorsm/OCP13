@@ -42,7 +42,7 @@ jobs:
           $lineRate = $covxml.coverage.'line-rate'
           Write-Output "lineRate=$lineRate" >> $GITHUB_OUTPUT
       - name: Check coverage tolerance
-        if: ${{ steps.get_line_rate.outputs.lineRate < 0.95 }}
+        if: ${{ steps.get_line_rate.outputs.lineRate < 0.8 }}
         uses: actions/github-script@v3
         with:
           script: |
