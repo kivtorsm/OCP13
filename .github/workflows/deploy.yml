@@ -5,16 +5,16 @@ on:
     types:
       - completed
 jobs:
-  create_env_file_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create .env file
-        run: |
-          cd oc_lettings_site
-          touch .env
-          echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
-          echo API_KEY=${{ secrets.API_KEY }} >> .env
-          cat .env
+#  create_env_file_job:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Create .env file
+#        run: |
+#          cd /home/ubuntu/oc_lettings_site
+#          touch .env
+#          echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
+#          echo API_KEY=${{ secrets.API_KEY }} >> .env
+#          cat .env
   build_image:
     name: Build Docker image and push to Docker Hub
     runs-on: ubuntu-latest
@@ -35,6 +35,9 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/ocp13:${{ github.sha }}
             ${{ secrets.DOCKERHUB_USERNAME }}/ocp13:latest
+          env:
+            SENTRY_DSN = ${{ secrets.SENTRY_DSN }}
+            SECRET_KEY = ${{ secrets.SECRET_KEY }}
   before-deploy:
     name: Before deploy
     runs-on: ubuntu-latest
