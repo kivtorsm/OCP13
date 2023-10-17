@@ -31,9 +31,18 @@ jobs:
           SENTRY_DSN: ${{ env.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
         run: pytest --junitxml=junit.xml
-#      - name: Coverage comment
-#        id: coverage_comment
-#        uses: py-cov-action/python-coverage-comment-action@v3
-#        with:
-#          GITHUB_TOKEN: ${{ github.token }}
-#          MINIMUM_GREEN: 80
+      - name: Get Line Rate from output
+        id: get_line_rate
+        shell: pwsh
+        run: |
+          $covreport = get-childitem -Filter coverage.cobertura.xml -Recurse | Sort-Object -Descending -Property LastWriteTime -Top 1
+          Write-Output $covreport.FullName
+          [xml]$covxml = Get-Content -Path $covreport.FullName
+          $lineRate = $covxml.coverage.'line-rate'
+          Write-Output "::set-output name=lineRate::$lineRate"
+      - name: Check coverage tolerance
+        if: ${{ steps.get_line_rate.outputs.lineRate < 0.9 }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Coverage test below tolerance')
