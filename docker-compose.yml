@@ -13,7 +13,7 @@ services:
       - /static:/static
 #    networks:
 #      - nginx_network
-    env_file: oc_lettings_site/.env
+    env_file: .env
 
   nginx:
       build:
