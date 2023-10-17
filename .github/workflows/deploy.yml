@@ -75,5 +75,5 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/
-            docker pull kivtor/ocp13:${{ github.sha }}
+            docker pull kivtor/ocp13:latest
             docker-compose up -d
