@@ -22,7 +22,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: kivtor/ocp13:${{ github.sha }}
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/ocp13:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/ocp13:latest
   before-deploy:
     name: Before deploy
     runs-on: ubuntu-latest
