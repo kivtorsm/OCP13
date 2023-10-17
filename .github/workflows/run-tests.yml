@@ -18,7 +18,8 @@ jobs:
         run: flake8
       - name: Execute tests
         env:
-          SENTRY_DSN: ${{ env.SENTRY_DSN }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SECRET_KEY: ${{ secrets.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
         run: pytest
       - name: Get Line Rate from output
