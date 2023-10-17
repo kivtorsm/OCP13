@@ -1,20 +1,10 @@
 name: Run tests
 on:
-  push:
-    branches-ignore:
-      - main
+  push
 jobs:
-  execute_tests:
-    name: Install requirements and execute tests
+  install_requirements:
+    name: Install requirements
     runs-on: ubuntu-latest
-    permissions:
-      # Gives the action the necessary permissions for publishing new
-      # comments in pull requests.
-      pull-requests: write
-      # Gives the action the necessary permissions for pushing data to the
-      # python-coverage-comment-action branch, and for editing existing
-      # comments (to avoid publishing multiple comments in the same PR)
-      contents: write
     steps:
       - name: Update
         run: sudo apt update
@@ -24,6 +14,10 @@ jobs:
         run: sudo apt install python3-pip
       - name: Install requirements
         run: pip install -r requirements.txt
+  execute_tests:
+    name: Execute tests and control test coverage
+    runs-on: ubuntu-latest
+    steps:
       - name: Check linting
         run: flake8
       - name: Execute tests

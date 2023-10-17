@@ -1,10 +1,28 @@
 name: deploy with ovh
 on:
-  push:
-    branches:
-      - main  # Déclencher le workflow lorsqu'un push est effectué sur la branche "main"
-
+  workflow_run:
+    workflows: [ "Run tests" ]
+    types:
+      - completed
 jobs:
+  build_image:
+    name: Build Docker image and push to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: kivtor/ocp13:${{ github.sha }}
   before-deploy:
     name: Before deploy
     runs-on: ubuntu-latest
@@ -34,5 +52,5 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/
-            docker pull kivtor/ocp13:latest
+            docker pull kivtor/ocp13:${{ github.sha }}
             docker-compose up -d
