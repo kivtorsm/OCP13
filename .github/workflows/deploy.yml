@@ -59,8 +59,8 @@ jobs:
           script: |
             cd /home/ubuntu/
             touch .env
-            echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
-            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+            echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
+            echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
             cat .env
             docker pull kivtor/ocp13:latest
             docker-compose up -d
