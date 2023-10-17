@@ -46,5 +46,5 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            echo "steps.get_line_rate.outputs.lineRate"
+            echo "${{ steps.get_line_rate.outputs.lineRate }}"
             core.setFailed('Coverage test below tolerance')
