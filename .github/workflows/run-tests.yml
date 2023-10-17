@@ -27,4 +27,4 @@ jobs:
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: ./pytest-coverage.txt
-          junitxml-path: ./pytest.xml
+          junitxml-path: ./pytest.xml  # enabled workflow
