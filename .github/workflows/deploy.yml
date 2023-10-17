@@ -44,22 +44,6 @@ jobs:
           port: 22
           source: "./nginx, docker-compose.yml"
           target: "/home/ubuntu/"
-          script: |
-#                    cd /home/ubuntu
-                    touch .env
-                    echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
-                    echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-                    cat .env
-#      - name: create .env file
-#        with:
-#          host: ${{ secrets.OVH_IP_ADDRESS }}
-#          username: ${{ secrets.OVH_USER }}
-#          key: ${{ secrets.OVH_PRIVATE_KEY }}
-#          port: 22
-#          source: "./nginx, docker-compose.yml"
-#          target: "/home/ubuntu/"
-#
-
   deploy:
     runs-on: ubuntu-latest  # Utilisez l'image Ubuntu par défaut
     needs: before-deploy
@@ -74,5 +58,9 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/
+            touch .env
+            echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
+            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+            cat .env
             docker pull kivtor/ocp13:latest
             docker-compose up -d
