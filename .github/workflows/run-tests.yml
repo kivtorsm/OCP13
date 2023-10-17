@@ -23,3 +23,8 @@ jobs:
           SENTRY_DSN: ${{ env.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
         run: pytest
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml
