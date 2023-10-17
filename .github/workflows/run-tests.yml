@@ -40,11 +40,10 @@ jobs:
           Write-Output $covreport.FullName
           [xml]$covxml = Get-Content -Path $covreport.FullName
           $lineRate = $covxml.coverage.'line-rate'
-          Write-Output "lineRate=$lineRate" >> $GITHUB_OUTPUT
+          Write-Output "::set-output name=lineRate::$lineRate"
       - name: Check coverage tolerance
         if: ${{ steps.get_line_rate.outputs.lineRate < 0.8 }}
         uses: actions/github-script@v3
         with:
           script: |
-            echo "${{ steps.get_line_rate.outputs.lineRate }}"
             core.setFailed('Coverage test below tolerance')
