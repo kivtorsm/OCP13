@@ -30,10 +30,10 @@ jobs:
         env:
           SENTRY_DSN: ${{ env.SENTRY_DSN }}
           DJANGO_SETTINGS_MODULE: oc_lettings_site.settings
-        run: pytest
-      - name: Coverage comment
-        id: coverage_comment
-        uses: py-cov-action/python-coverage-comment-action@v3
-        with:
-          GITHUB_TOKEN: ${{ github.token }}
-          MINIMUM_GREEN: 80
+        run: pytest --junitxml=junit.xml
+#      - name: Coverage comment
+#        id: coverage_comment
+#        uses: py-cov-action/python-coverage-comment-action@v3
+#        with:
+#          GITHUB_TOKEN: ${{ github.token }}
+#          MINIMUM_GREEN: 80
