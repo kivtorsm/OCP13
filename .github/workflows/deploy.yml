@@ -63,5 +63,7 @@ jobs:
             echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
             echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
             cat .env
+            docker rm -vf $(docker ps -aq) || true  
+            docker rmi -f $(docker images -aq) || true
             docker pull kivtor/ocp13:latest
             docker-compose up -d
