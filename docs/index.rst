@@ -10,11 +10,12 @@ Welcome to OCP13's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   project
+   ./install.rst
+   ./quick-start.rst
+   ./config.rst
+   ./database.rst
+   ./programming-interfaces.rst
+   ./user-guide.rst
+   ./deployment-app-management.rst
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
