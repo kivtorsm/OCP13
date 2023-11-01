@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to OCP13's documentation!
+Welcome to VSM_OCP13's documentation!
 =================================
 
 OC Lettings is a property letting site that allows users to look for and book properties owned by other people.
