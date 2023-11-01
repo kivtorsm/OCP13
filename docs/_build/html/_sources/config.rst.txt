@@ -1,5 +1,5 @@
-Technologies and development languages used in this project
-===========================================================
+Technologies
+============
 
 * Python
 * Django

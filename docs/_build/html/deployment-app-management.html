@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deployment &amp; App management &mdash; OCP13 v0.0.1 documentation</title>
+  <title>Deployment &mdash; OCP13 v0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -45,11 +45,32 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick-start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Technologies and development languages used in this project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Technologies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment &amp; App management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dockerhub">DockerHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github">GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serveur-de-production">Serveur de production</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#projet-sentry-parametre-dans-lapplication">Projet Sentry paramétré dans l’application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#etapes">Etapes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modifier-docker-compose-yml">1. Modifier <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifier-github-workflows-deploy-yml">2. Modifier <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installer-docker-sur-le-serveur">3. Installer Docker sur le serveur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installer-docker-compose-sur-le-serveur">4. Installer Docker Compose sur le serveur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creer-une-cle-publique-rsa">5. Créer une clé publique RSA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creer-un-token-de-connexion-dockerhub">6. Créer un token de connexion DockerHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametrer-les-secrets-sur-github">7. Paramétrer les secrets sur GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testez-les-workflow">8. Testez les workflow :</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -66,7 +87,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Deployment &amp; App management</li>
+      <li class="breadcrumb-item active">Deployment</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/deployment-app-management.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,8 +97,295 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="deployment-app-management">
-<h1>Deployment &amp; App management<a class="headerlink" href="#deployment-app-management" title="Link to this heading"></a></h1>
+  <section id="deployment">
+<h1>Deployment<a class="headerlink" href="#deployment" title="Link to this heading"></a></h1>
+<p>Pipeline CI/CD en place avec DockerHub et GitHub actions: - Sur toutes
+les branches - Workflow <code class="docutils literal notranslate"><span class="pre">.github/workflows/run-tests.yml</span></code> : -
+Vérification du linting - Exécution des tests automatisés - Vérification
+couverture de test &gt; 80% - Sur la branche main (en plus des actions
+communes à toutes les branches) - Workflow
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code> : - Création d’une image Docker -
+Publication de l’image Docker sur DockerHub - Récupération de l’image
+depuis le serveur d’application - Build du conteneur et lancement de
+l’image</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h3>
+<p>Nécessite Docker Desktop installé sur la machine locale.</p>
+</section>
+<section id="dockerhub">
+<h3>DockerHub<a class="headerlink" href="#dockerhub" title="Link to this heading"></a></h3>
+<p>Nécessite un compte dockerHub.</p>
+</section>
+<section id="github">
+<h3>GitHub<a class="headerlink" href="#github" title="Link to this heading"></a></h3>
+<p>Nécessite un compte GitHub.</p>
+</section>
+<section id="serveur-de-production">
+<h3>Serveur de production<a class="headerlink" href="#serveur-de-production" title="Link to this heading"></a></h3>
+<p>Nécessite un serveur fonctionnant avec ubuntu. Informations nécessaires
+: - Adresse IPv4 - Utilisateur - Mot de passe</p>
+</section>
+<section id="projet-sentry-parametre-dans-lapplication">
+<h3>Projet Sentry paramétré dans l’application<a class="headerlink" href="#projet-sentry-parametre-dans-lapplication" title="Link to this heading"></a></h3>
+<p>Nécessite un projet sentry avec un code DSN à remplacer dans le fichier</p>
+</section>
+</section>
+<section id="etapes">
+<h2>Etapes<a class="headerlink" href="#etapes" title="Link to this heading"></a></h2>
+<section id="modifier-docker-compose-yml">
+<h3>1. Modifier <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code><a class="headerlink" href="#modifier-docker-compose-yml" title="Link to this heading"></a></h3>
+<p>Dans le fichier, remplacer <code class="docutils literal notranslate"><span class="pre">image:</span> <span class="pre">kivtor/ocp13:latest</span></code> par
+<code class="docutils literal notranslate"><span class="pre">image:</span> <span class="pre">&lt;utilisateur_dockerhub&gt;/&lt;nom_repository&gt;:latest</span></code>.
+Avec :
+- &lt;utilisateur_dockerhub&gt; = nom d’utilisateur dockerhub
+- &lt;nom_repository&gt; = nom du repository dockerhub dans lequel sont stockées les images Docker</p>
+</section>
+<section id="modifier-github-workflows-deploy-yml">
+<h3>2. Modifier <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code><a class="headerlink" href="#modifier-github-workflows-deploy-yml" title="Link to this heading"></a></h3>
+<p>Dans le fichier, remplacer <code class="docutils literal notranslate"><span class="pre">image:</span> <span class="pre">kivtor/ocp13:latest</span></code> par
+<code class="docutils literal notranslate"><span class="pre">image:</span> <span class="pre">&lt;utilisateur_dockerhub&gt;/&lt;nom_repository&gt;:latest</span></code>.
+Avec :
+- &lt;utilisateur_dockerhub&gt; = nom d’utilisateur dockerhub
+- &lt;nom_repository&gt; = nom du repository dockerhub dans lequel sont stockées les images Docker</p>
+</section>
+<section id="installer-docker-sur-le-serveur">
+<h3>3. Installer Docker sur le serveur<a class="headerlink" href="#installer-docker-sur-le-serveur" title="Link to this heading"></a></h3>
+<p>Il faut exécuter les commandes suivantes en se connectant au serveur via
+ssh avec la commande :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>user@ip_address
+</pre></div>
+</div>
+<p>Avec l’utilisateur et l’adresse ip du serveur destiné à héberger
+l’application</p>
+<ol class="arabic simple">
+<li><p>Mettre à jour la liste des packets :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Installer pré-requisites pour permettre à <code class="docutils literal notranslate"><span class="pre">apt</span></code> d’échanger des
+packets en https :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>software-properties-common
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Ajouter clé GPG pour le repository Docker</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Ajouter le repository Docker aux sources Apt</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Assurez-vous que vous installez depuis le registre Docker</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-cache<span class="w"> </span>policy<span class="w"> </span>docker-ce
+</pre></div>
+</div>
+<p>Vous devriez voir un output similaire à ceci :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-ce:
+<span class="w">  </span>Installed:<span class="w"> </span><span class="o">(</span>none<span class="o">)</span>
+<span class="w">  </span>Candidate:<span class="w"> </span><span class="m">5</span>:19.03.9~3-0~ubuntu-focal
+<span class="w">  </span>Version<span class="w"> </span>table:
+<span class="w">     </span><span class="m">5</span>:19.03.9~3-0~ubuntu-focal<span class="w"> </span><span class="m">500</span>
+<span class="w">        </span><span class="m">500</span><span class="w"> </span>https://download.docker.com/linux/ubuntu<span class="w"> </span>focal/stable<span class="w"> </span>amd64<span class="w"> </span>Packages
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Notez que <code class="docutils literal notranslate"><span class="pre">docker-ce</span></code> n’est pas installé, mais que le candidat pour
+installation vient du repository Docker pour Ubuntu (<code class="docutils literal notranslate"><span class="pre">focal</span></code>)</p></li>
+<li><p>Installez Docker :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>docker-ce
+</pre></div>
+</div>
+<p>Docker devrait être installé maintenant. 8. Vérifiez que c’est bien
+installé :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+</pre></div>
+</div>
+<p>La réponse devrait être similaire à ceci:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Output
+
+●<span class="w"> </span>docker.service<span class="w"> </span>-<span class="w"> </span>Docker<span class="w"> </span>Application<span class="w"> </span>Container<span class="w"> </span>Engine
+<span class="w">     </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/lib/systemd/system/docker.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<span class="w">     </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Tue<span class="w"> </span><span class="m">2020</span>-05-19<span class="w"> </span><span class="m">17</span>:00:41<span class="w"> </span>UTC<span class="p">;</span><span class="w"> </span>17s<span class="w"> </span>ago
+TriggeredBy:<span class="w"> </span>●<span class="w"> </span>docker.socket
+<span class="w">       </span>Docs:<span class="w"> </span>https://docs.docker.com
+<span class="w">   </span>Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">24321</span><span class="w"> </span><span class="o">(</span>dockerd<span class="o">)</span>
+<span class="w">      </span>Tasks:<span class="w"> </span><span class="m">8</span>
+<span class="w">     </span>Memory:<span class="w"> </span><span class="m">46</span>.4M
+<span class="w">     </span>CGroup:<span class="w"> </span>/system.slice/docker.service
+<span class="w">             </span>└─24321<span class="w"> </span>/usr/bin/dockerd<span class="w"> </span>-H<span class="w"> </span>fd://<span class="w"> </span>--containerd<span class="o">=</span>/run/containerd/containerd.sock
+</pre></div>
+</div>
+<p>Le service se montre actif et en cours d’exécution (<code class="docutils literal notranslate"><span class="pre">active(running)</span></code>)</p>
+</section>
+<section id="installer-docker-compose-sur-le-serveur">
+<h3>4. Installer Docker Compose sur le serveur<a class="headerlink" href="#installer-docker-compose-sur-le-serveur" title="Link to this heading"></a></h3>
+<p>Il faut exécuter les commandes suivantes en se connectant au serveur via
+ssh avec la commande :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>user@ip_address
+</pre></div>
+</div>
+<p>Avec l’utilisateur et l’adresse ip du serveur destiné à héberger
+l’application 1. Télécharger et enregistrer l’exécutable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/docker-compose
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Corriger permission pour que la commande <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> soit
+exécutable:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/docker-compose
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Vérifier que l’installation a bien été faite :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Il devrait y avoir une réponse similaire à ceci :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.29.2,<span class="w"> </span>build<span class="w"> </span>5becea4c
+</pre></div>
+</div>
+</section>
+<section id="creer-une-cle-publique-rsa">
+<h3>5. Créer une clé publique RSA<a class="headerlink" href="#creer-une-cle-publique-rsa" title="Link to this heading"></a></h3>
+<p>Toujours connecté au serveur via ssh</p>
+<ol class="arabic simple">
+<li><p>Exécuter cette commande et faire entrée à chaque question :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-m<span class="w"> </span>PEM<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Visualizer le contenu du fichier de clé publique</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>~/.ssh/id_rsa.pub
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Créer un fichier <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>~/.ssh/authorized_keys
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Copier clé publique vers le fichier <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>~/.ssh/authorized_keys
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Mettre à jour les permissions</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/authorized_keys
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/id_rsa
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Copier le résultat de ce code (nous allons le coller dans un fichier
+local)</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>~/.ssh/id_rsa
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Se déconnecter du server</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Créer un fichier private_key.pem sur votre machine local ajouter le
+contenu que vous avez copié après cette commande
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_rsa</span></code></p></li>
+<li><p>Se connecter à nouveau en utilisant le fichier <code class="docutils literal notranslate"><span class="pre">.pem</span></code></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-i<span class="w"> </span>private_key.pem<span class="w"> </span>user@ip_address
+</pre></div>
+</div>
+<p>Si vous êtes connecté alors tout est ok. On passe à l’étape suivante.</p>
+</section>
+<section id="creer-un-token-de-connexion-dockerhub">
+<h3>6. Créer un token de connexion DockerHub<a class="headerlink" href="#creer-un-token-de-connexion-dockerhub" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Connectez-vous à dockerHub</p></li>
+<li><p>Sur votre profil, allez sur <code class="docutils literal notranslate"><span class="pre">Account</span> <span class="pre">Settings</span></code></p></li>
+<li><p>Allez dans le menu sécurité</p></li>
+<li><p>Appuyez sur <img alt="img.png" src="_images/img.png" /></p></li>
+<li><p>Donner un nom au Token (GitHub par exemple), laisser les droits Read,
+Write, Delete</p></li>
+<li><p>Appuyez sur générer</p></li>
+<li><p>Copiez les informations et enregistrez-le dans un endroit sûr</p></li>
+</ol>
+</section>
+<section id="parametrer-les-secrets-sur-github">
+<h3>7. Paramétrer les secrets sur GitHub<a class="headerlink" href="#parametrer-les-secrets-sur-github" title="Link to this heading"></a></h3>
+<p>Aller dans l’interface de paramétrage des secrets Github :</p>
+<p>Dans le repository gitHub du projet aller dans :
+- Settings
+- Security &gt; Secrets and variables
+- Actions</p>
+<p>Créer les secrets suivants :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nom de secret</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DOCKERHUB_TOKEN</p></td>
+<td><p>&lt;Token DockerHub créé lors de l’étape précédente&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOCKERHUB_USERNAME</p></td>
+<td><p>&lt;Nom d’utilisateur du compte dockerHub&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>OVH_IP_ADDRESS</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>OVH_PRIVATE_KEY</p></td>
+<td><p>&lt;Clé privée crée à l’étape 4&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>OVH_USER</p></td>
+<td><p>&lt;Nom d’utilisateur du serveur de production&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>SECRET_KEY</p></td>
+<td><p>&lt;Secret key de l’application Django du fichier .env&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>SENTRY_DSN</p></td>
+<td><p>&lt;Code DSN de connexion à Sentry du fichier .env&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="testez-les-workflow">
+<h3>8. Testez les workflow :<a class="headerlink" href="#testez-les-workflow" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Faites une modification de code dans une branche non main et commitez
+et pushez votre code vers GitHub → le workflow de vérification de
+linting, tests automatisés et couverture de code s’exécute</p></li>
+<li><p>Faites une modification de code dans une branche main, commitez et
+pushez le code vers GitHub → s’éxecutent dans GitHub actions :</p>
+<ul>
+<li><p>Le workflow de vérification de code</p></li>
+<li><p>Le workflow de livraison continue → Votre application s’exécute
+dans votre serveur de production</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 </section>
 
 

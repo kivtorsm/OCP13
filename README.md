@@ -130,7 +130,7 @@ Dans le fichier, remplacer `image: kivtor/ocp13:latest` par `image: <utilisateur
    - <utilisateur_dockerHub> = nom d'utilisateur dockerhub
    - <nom_repository> = nom du repository dockerhub dans lequel sont stockées les images Docker
 
-### 3. Installer Docker sur le serveur 
+#### 3. Installer Docker sur le serveur 
 Il faut exécuter les commandes suivantes en se connectant au serveur via ssh avec la commande :
 ```bash
 ssh user@ip_address
@@ -196,7 +196,7 @@ TriggeredBy: ● docker.socket
 
 Le service se montre actif et en cours d'exécution (`active(running)`)
 
-### 3. Installer Docker Compose sur le serveur 
+#### 4. Installer Docker Compose sur le serveur 
 Il faut exécuter les commandes suivantes en se connectant au serveur via ssh avec la commande :
 ```bash
 ssh user@ip_address
@@ -220,7 +220,7 @@ Il devrait y avoir une réponse similaire à ceci :
 docker-compose version 1.29.2, build 5becea4c
 ```
 
-### 4. Créer une clé publique RSA
+#### 5. Créer une clé publique RSA
 Toujours connecté au serveur via ssh
 
 1. Exécuter cette commande et faire entrée à chaque question :
@@ -268,7 +268,7 @@ Si vous êtes connecté alors tout est ok. On passe à l'étape suivante.
 6. Appuyez sur générer
 7. Copiez les informations et enregistrez-le dans un endroit sûr
 
-#### 5. Paramétrer les secrets sur GitHub
+#### 7. Paramétrer les secrets sur GitHub
 Aller dans l'interface de paramétrage des secrets Github :
 
 Dans le repository gitHub du projet aller dans :
@@ -289,7 +289,7 @@ Créer les secrets suivants :
 | SENTRY_DSN         | <Code DSN de connexion à Sentry du fichier .env>     |
 
 
-#### 6. Testez les workflow :
+#### 8. Testez les workflow :
    - Faites une modification de code dans une branche non main et commitez et pushez votre code vers GitHub
     &rarr; le workflow de vérification de linting, tests automatisés et couverture de code s'exécute
    - Faites une modification de code dans une branche main, commitez et pushez le code vers GitHub
