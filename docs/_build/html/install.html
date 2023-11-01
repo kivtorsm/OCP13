@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install &mdash; OCP13 v0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=2fea6348"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick-start" href="quick-start.html" />
+    <link rel="prev" title="Welcome to OCP13’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OCP13
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequis">Prérequis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macos-linux">macOS / Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloner-le-repository">Cloner le repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creer-l-environnement-virtuel">Créer l’environnement virtuel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#executer-le-site">Exécuter le site</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linting">Linting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tests-unitaires">Tests unitaires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base-de-donnees">Base de données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#panel-d-administration">Panel d’administration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supervision-de-l-application-via-sentry">Supervision de l’application via Sentry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#securite-de-l-application">Sécurité de l’application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick-start.html">Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Technologies and development languages used in this project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment-app-management.html">Deployment &amp; App management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OCP13</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Install</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install">
+<h1>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h1>
+<section id="prerequis">
+<h2>Prérequis<a class="headerlink" href="#prerequis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Compte GitHub avec accès en lecture à ce repository</p></li>
+<li><p>Git CLI</p></li>
+<li><p>SQLite3 CLI</p></li>
+<li><p>Interpréteur Python, version 3.6 ou supérieure</p></li>
+<li><p>Dans le reste de la documentation sur le développement local, il est supposé que la commande python de votre OS shell exécute l’interpréteur Python ci-dessus (à moins qu’un environnement virtuel ne soit activé).</p></li>
+</ul>
+</section>
+<section id="macos-linux">
+<h2>macOS / Linux<a class="headerlink" href="#macos-linux" title="Link to this heading"></a></h2>
+<section id="cloner-le-repository">
+<h3>Cloner le repository<a class="headerlink" href="#cloner-le-repository" title="Link to this heading"></a></h3>
+<p>cd /path/to/put/project/in
+git clone <a class="reference external" href="https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git">https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git</a></p>
+</section>
+<section id="creer-l-environnement-virtuel">
+<h3>Créer l’environnement virtuel<a class="headerlink" href="#creer-l-environnement-virtuel" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/Python-OC-Lettings-FR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">venv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-venv</span></code> (Si l’étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)</p></li>
+<li><p>Activer l’environnement source <code class="docutils literal notranslate"><span class="pre">venv/bin/activate</span></code></p></li>
+<li><p>Confirmer que la commande python exécute l’interpréteur Python dans l’environnement virtuel <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">python</span></code></p></li>
+<li><p>Confirmer que la version de l’interpréteur Python est la version 3.6 ou supérieure python <code class="docutils literal notranslate"><span class="pre">--version</span></code></p></li>
+<li><p>Confirmer que la commande pip exécute l’exécutable pip dans l’environnement virtuel, <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">pip</span></code></p></li>
+<li><p>Pour désactiver l’environnement, <code class="docutils literal notranslate"><span class="pre">deactivate</span></code></p></li>
+</ul>
+</section>
+<section id="executer-le-site">
+<h3>Exécuter le site<a class="headerlink" href="#executer-le-site" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/Python-OC-Lettings-FR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">venv/bin/activate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--requirement</span> <span class="pre">requirements.txt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></code></p></li>
+<li><p>Aller sur <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> dans un navigateur.</p></li>
+<li><p>Confirmer que le site fonctionne et qu’il est possible de naviguer (vous devriez voir plusieurs profils et locations).</p></li>
+</ul>
+</section>
+<section id="linting">
+<h3>Linting<a class="headerlink" href="#linting" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/Python-OC-Lettings-FR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">venv/bin/activate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flake8</span></code></p></li>
+</ul>
+</section>
+<section id="tests-unitaires">
+<h3>Tests unitaires<a class="headerlink" href="#tests-unitaires" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/Python-OC-Lettings-FR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">venv/bin/activate</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code></p></li>
+</ul>
+</section>
+<section id="base-de-donnees">
+<h3>Base de données<a class="headerlink" href="#base-de-donnees" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/Python-OC-Lettings-FR</span></code></p></li>
+<li><p>Ouvrir une session shell sqlite3</p></li>
+<li><p>Se connecter à la base de données <code class="docutils literal notranslate"><span class="pre">.open</span> <span class="pre">oc-lettings-site.sqlite3</span></code></p></li>
+<li><p>Afficher les tables dans la base de données <code class="docutils literal notranslate"><span class="pre">.tables</span></code></p></li>
+<li><p>Afficher les colonnes dans le tableau des profils, <code class="docutils literal notranslate"><span class="pre">pragma</span> <span class="pre">table_info(Python-OC-Lettings-FR_profile);</span></code></p></li>
+<li><p>Lancer une requête sur la table des profils, <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">user_id,</span> <span class="pre">favorite_city</span> <span class="pre">from</span> <span class="pre">Python-OC-Lettings-FR_profile</span> <span class="pre">where</span> <span class="pre">favorite_city</span> <span class="pre">like</span> <span class="pre">'B%';</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.quit</span></code> pour quitter</p></li>
+</ul>
+</section>
+<section id="panel-d-administration">
+<h3>Panel d’administration<a class="headerlink" href="#panel-d-administration" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Aller sur <a class="reference external" href="http://localhost:8000/admin">http://localhost:8000/admin</a></p></li>
+<li><p>Connectez-vous avec l’utilisateur admin, mot de passe Abc1234!</p></li>
+</ul>
+</section>
+<section id="supervision-de-l-application-via-sentry">
+<h3>Supervision de l’application via Sentry<a class="headerlink" href="#supervision-de-l-application-via-sentry" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Créer un projet SEntry et remplacer le code DSN Sentry dans le fichier .env</p></li>
+</ul>
+</section>
+<section id="securite-de-l-application">
+<h3>Sécurité de l’application<a class="headerlink" href="#securite-de-l-application" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Déplacer la variable Secret Key de l’application Django dans settings.py vers le fichier .env</p></li>
+</ul>
+</section>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h2>
+<p>Utilisation de PowerShell, comme ci-dessus sauf :
+* Pour activer l’environnement virtuel, <code class="docutils literal notranslate"><span class="pre">.\venv\Scripts\Activate.ps1</span></code>
+* Remplacer <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">&lt;my-command&gt;</span></code> par <code class="docutils literal notranslate"><span class="pre">(Get-Command</span> <span class="pre">&lt;my-command&gt;).Path</span></code></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to OCP13’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick-start.html" class="btn btn-neutral float-right" title="Quick-start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, vsm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

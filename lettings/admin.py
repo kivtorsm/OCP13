@@ -5,7 +5,7 @@ Lettings app admin module.
 """
 
 from django.contrib import admin
-from .models import Address, Letting
+from lettings.models import Address, Letting
 
 # Register of app models for the admin interface
 

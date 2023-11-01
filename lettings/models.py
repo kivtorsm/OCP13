@@ -10,10 +10,12 @@ from django.core.validators import MaxValueValidator, MinLengthValidator
 
 class Address(models.Model):
     """
-    Adress model.
+    Address model.
     ...
+
     Attributes
     ----------
+
     number: int
         Street number
     street: str
@@ -29,6 +31,7 @@ class Address(models.Model):
 
     Methods
     -------
+
     __str__:
         prints a string when the instance is printed
     """
@@ -42,6 +45,7 @@ class Address(models.Model):
     def __str__(self):
         """
         Returns the number and the name of the street from the address
+
         :return: number and name of street of the address instance
         """
         return f'{self.number} {self.street}'
@@ -55,10 +59,13 @@ class Address(models.Model):
 
 class Letting(models.Model):
     """
-    Letting model. Represents a propery that can be let.
+    Letting model. Represents a property that can be let.
+
     ...
+
     Attributes
     ----------
+
     title: str
         Title for the letting
     address: Address
@@ -66,6 +73,7 @@ class Letting(models.Model):
 
     Methods
     -------
+
     __str__:
         prints a string when the instance is printed
     """
@@ -75,6 +83,7 @@ class Letting(models.Model):
     def __str__(self):
         """
         Shows a printed name of the model with the title
+
         :return: string with the title of the model instance
         """
         return self.title

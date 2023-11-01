@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lettings.models.Address &mdash; OCP13 v0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=2fea6348"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="lettings.models.Letting" href="lettings.models.Letting.html" />
+    <link rel="prev" title="lettings.models" href="../lettings.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            OCP13
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start.html">Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../config.html">Technologies and development languages used in this project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../lettings.html">lettings</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../lettings.admin.html">lettings.admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lettings.apps.html">lettings.apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lettings.migrations.html">lettings.migrations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../lettings.models.html">lettings.models</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">lettings.models.Address</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lettings.models.Letting.html">lettings.models.Letting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lettings.tests.html">lettings.tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lettings.urls.html">lettings.urls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lettings.views.html">lettings.views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../profiles.html">profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../user-guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment-app-management.html">Deployment &amp; App management</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OCP13</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../usage.html">Usage</a></li>
+          <li class="breadcrumb-item"><a href="../lettings.html">lettings</a></li>
+          <li class="breadcrumb-item"><a href="../lettings.models.html">lettings.models</a></li>
+      <li class="breadcrumb-item active">lettings.models.Address</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/_autosummary/lettings/lettings.models.Address.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lettings-models-address">
+<h1>lettings.models.Address<a class="headerlink" href="#lettings-models-address" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="lettings.models.Address">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lettings.models.</span></span><span class="sig-name descname"><span class="pre">Address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lettings.models.Address" title="Link to this definition"></a></dt>
+<dd><p><strong>Database table:</strong> <code class="docutils literal notranslate"><span class="pre">lettings_address</span></code></p>
+<p>Address model.
+…</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>number: int</dt><dd><p>Street number</p>
+</dd>
+<dt>street: str</dt><dd><p>Street name</p>
+</dd>
+<dt>city: str</dt><dd><p>City name</p>
+</dd>
+<dt>state: str</dt><dd><p>State name</p>
+</dd>
+<dt>zip_code: int</dt><dd><p>postal zip code</p>
+</dd>
+<dt>country_iso_code: str</dt><dd><p>country international iso code</p>
+</dd>
+</dl>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>__str__:</dt><dd><p>prints a string when the instance is printed</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">param id<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Primary key: ID</p>
+</dd>
+<dt class="field-even">type id<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.AutoField</p>
+</dd>
+<dt class="field-odd">param number<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number</p>
+</dd>
+<dt class="field-even">type number<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.PositiveIntegerField</p>
+</dd>
+<dt class="field-odd">param street<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Street</p>
+</dd>
+<dt class="field-even">type street<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.CharField</p>
+</dd>
+<dt class="field-odd">param city<span class="colon">:</span></dt>
+<dd class="field-odd"><p>City</p>
+</dd>
+<dt class="field-even">type city<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.CharField</p>
+</dd>
+<dt class="field-odd">param state<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+<dt class="field-even">type state<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.CharField</p>
+</dd>
+<dt class="field-odd">param zip_code<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Zip code</p>
+</dd>
+<dt class="field-even">type zip_code<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.PositiveIntegerField</p>
+</dd>
+<dt class="field-odd">param country_iso_code<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Country iso code</p>
+</dd>
+<dt class="field-even">type country_iso_code<span class="colon">:</span></dt>
+<dd class="field-even"><p>~django.db.models.CharField</p>
+</dd>
+</dl>
+<p>Reverse relationships:</p>
+<dl class="field-list simple">
+<dt class="field-odd">param letting<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The letting of this address (related name of <code class="xref py py-attr docutils literal notranslate"><span class="pre">address</span></code>)</p>
+</dd>
+<dt class="field-even">type letting<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.OneToOneField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneToOneField</span></code></a> from <a class="reference internal" href="lettings.models.Letting.html#lettings.models.Letting" title="lettings.models.Letting"><code class="xref py py-class docutils literal notranslate"><span class="pre">Letting</span></code></a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lettings.models.Address.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lettings.models.Address.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lettings.models.Address.__init__" title="lettings.models.Address.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">adelete</span></code>([using, keep_parents])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">arefresh_from_db</span></code>([using, fields])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asave</span></code>([force_insert, force_update, using, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">check</span></code>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean</span></code>()</p></td>
+<td><p>Hook for doing any extra model-wide validation after clean() has been called on every field by self.clean_fields.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_fields</span></code>([exclude])</p></td>
+<td><p>Clean all fields and raise a ValidationError containing a dict of all validation errors if any occur.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">date_error_message</span></code>(lookup_type, field_name, ...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code>([using, keep_parents])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_db</span></code>(db, field_names, values)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">full_clean</span></code>([exclude, validate_unique, ...])</p></td>
+<td><p>Call clean_fields(), clean(), validate_unique(), and validate_constraints() on the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_constraints</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_deferred_fields</span></code>()</p></td>
+<td><p>Return a set containing names of deferred fields for this instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_database_save</span></code>(field)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">refresh_from_db</span></code>([using, fields])</p></td>
+<td><p>Reload field values from the database.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code>([force_insert, force_update, using, ...])</p></td>
+<td><p>Save the current instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_base</span></code>([raw, force_insert, force_update, ...])</p></td>
+<td><p>Handle the parts of saving which should be done only once per save, yet need to be done in raw saves, too.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">serializable_value</span></code>(field_name)</p></td>
+<td><p>Return the value of the field name for this instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_error_message</span></code>(model_class, unique_check)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_constraints</span></code>([exclude])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_unique</span></code>([exclude])</p></td>
+<td><p>Check unique constraints on the model and raise ValidationError if any failed.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">city</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">country_iso_code</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.AutoField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoField</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">letting</span></code></p></td>
+<td><p>Type: Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.OneToOneField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneToOneField</span></code></a> from <a class="reference internal" href="lettings.models.Letting.html#lettings.models.Letting" title="lettings.models.Letting"><code class="xref py py-class docutils literal notranslate"><span class="pre">Letting</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.PositiveIntegerField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositiveIntegerField</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">objects</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pk</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">state</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">street</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">zip_code</span></code></p></td>
+<td><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.PositiveIntegerField" title="(in Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositiveIntegerField</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lettings.models.html" class="btn btn-neutral float-left" title="lettings.models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lettings.models.Letting.html" class="btn btn-neutral float-right" title="lettings.models.Letting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, vsm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

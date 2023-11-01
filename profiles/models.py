@@ -10,8 +10,10 @@ class Profile(models.Model):
     """
     Profile class including the user and the favorite city
     ...
+
     Attributes
     ----------
+
     user: User
         App user model imported from django.contrib.auth.models
     favorite_city: str
@@ -19,6 +21,7 @@ class Profile(models.Model):
 
     Methods
     -------
+
     __str__:
         prints a string when the instance is printed
     """
@@ -28,6 +31,7 @@ class Profile(models.Model):
     def __str__(self):
         """
         Shows a string when printing the class instance
+
         :return: username string
         """
         return self.user.username
