@@ -43,7 +43,16 @@ html_static_path = ['_static']
 
 # -- Autodoc --------------------------------------------------------
 
-autodoc_mock_imports = ["lettings.models", "views", 'environ', 'sentry_sdk', 'pathlib']
+autodoc_mock_imports = [
+    "lettings.models",
+    "views",
+    'environ',
+    'sentry_sdk',
+    'pathlib',
+    'tests',
+    'asgi',
+    'wsgi'
+]
 autosummary_imported_members = False
 numpydoc_show_class_members = False
 autosummary_generate_overwrite = False
