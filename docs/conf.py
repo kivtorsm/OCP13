@@ -51,7 +51,11 @@ autodoc_mock_imports = [
     'pathlib',
     'tests',
     'asgi',
-    'wsgi'
+    'wsgi',
+    "pytest_django",
+    'request_logging',
+    'pytest',
+
 ]
 autosummary_imported_members = False
 numpydoc_show_class_members = False
