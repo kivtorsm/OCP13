@@ -8,14 +8,16 @@ profiles.views
    
 
    
-   
-   .. rubric:: Functions
 
-   .. autosummary::
-   
-      index
-      profile
-   
+    .. rubric:: Functions
+
+    .. autosummary::
+        :toctree: profiles
+        :recursive:
+
+        index
+        profile
+
    
 
    

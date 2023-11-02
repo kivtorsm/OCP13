@@ -23,6 +23,7 @@ def test_profiles_list_url():
     Tests url for showing the profiles list :
         - Correct path for the url name
         - Correct view name for the url name path
+
     :return: none
     """
     path = reverse('profiles:index')
@@ -36,6 +37,7 @@ def test_profiles_list_view(client):
     Tests view for showing the lettings list :
         - Status code 200
         - 'Profiles' included in the response content
+
     :param client: client used for mocking http requests
     :return: none
     """
@@ -49,6 +51,7 @@ def test_profile_model():
     """
     Tests profile model :
         - Correct printing of profile model
+
     :return: none
     """
     user = User.objects.create_user('mock-user')
@@ -67,6 +70,7 @@ def test_profile_detail_url():
     Tests url for showing a profile details :
         - Created profile path corresponds to expected value
         - View name used in the path corresponds to expected view
+
     :return: none
     """
     user = User.objects.create_user('mock-user')
@@ -87,6 +91,7 @@ def test_profiles_detail_view(client):
         - Status code 200
         - Expected content inside request
         - Template used in render corresponds to expected template
+
     :param client: client used for mocking http requests
     :return: none
     """

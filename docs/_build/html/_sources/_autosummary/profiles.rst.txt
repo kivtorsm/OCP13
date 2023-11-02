@@ -21,17 +21,17 @@
 
 
 
-.. rubric:: Modules
+    .. rubric:: Modules
 
-.. autosummary::
-   :toctree:
-   :recursive:
+    .. autosummary::
+        :toctree:
+        :recursive:
 
-   profiles.admin
-   profiles.apps
-   profiles.migrations
-   profiles.models
-   profiles.tests
-   profiles.urls
-   profiles.views
+        profiles.admin
+        profiles.apps
+        profiles.migrations
+        profiles.models
+        profiles.tests
+        profiles.urls
+        profiles.views
 

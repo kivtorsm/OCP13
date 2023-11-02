@@ -21,17 +21,17 @@
 
 
 
-.. rubric:: Modules
+    .. rubric:: Modules
 
-.. autosummary::
-   :toctree:
-   :recursive:
+    .. autosummary::
+       :toctree:
+       :recursive:
 
-   lettings.admin
-   lettings.apps
-   lettings.migrations
-   lettings.models
-   lettings.tests
-   lettings.urls
-   lettings.views
+       lettings.admin
+       lettings.apps
+       lettings.migrations
+       lettings.models
+       lettings.tests
+       lettings.urls
+       lettings.views
 

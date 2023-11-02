@@ -18,6 +18,7 @@ def test_homepage_view(client):
         - Status code 200
         - Title in response content
         - Template used corresponds to expected
+
     :param client: client used for mocking http requests
     :return: none
     """
@@ -32,6 +33,7 @@ def test_homepage_url():
     Tests homepage url :
         - Path corresponds to expected
         - Used view name corresponds to expected
+
     :return: none
     """
     path = reverse('index')
@@ -43,6 +45,7 @@ def test_should_return_admin_page(admin_client):
     """
     Tests admin page view :
         - Status code 200
+
     :param admin_client: client used for mocking http requests
     :return: none
     """
@@ -55,6 +58,7 @@ def test_404(client):
     Tests homepage view :
         - Status code 404
         - Personalized image present in response content
+
     :param client: client used for mocking http requests
     :return: none
     """

@@ -9,12 +9,14 @@ lettings.views
 
    
    
-   .. rubric:: Functions
+    .. rubric:: Functions
 
-   .. autosummary::
+    .. autosummary::
+        :toctree: lettings
+        :recursive:
    
-      index
-      letting
+        index
+        letting
    
    
 

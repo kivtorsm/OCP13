@@ -13,11 +13,13 @@ lettings.apps
 
    
    
-   .. rubric:: Classes
+    .. rubric:: Classes
 
-   .. autosummary::
+    .. autosummary::
+        :toctree: lettings
+        :recursive:
    
-      LettingsConfig
+        LettingsConfig
    
    
 

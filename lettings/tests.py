@@ -23,6 +23,7 @@ def test_lettings_list_url():
     Tests url for showing the lettings list :
         - Correct path for the url name
         - Correct view name for the url name path
+
     :return: none
     """
     path = reverse('lettings:index')
@@ -36,6 +37,7 @@ def test_lettings_list_view(client):
     Tests view for showing the lettings list :
         - Status code 200
         - 'Lettings' included in the response content
+
     :param client: client used for mocking http requests
     :return: none
     """
@@ -49,6 +51,7 @@ def test_lettings_model():
     """
     Tests letting model :
         - Correct printing of lettings model
+
     :return: none
     """
     address = Address.objects.create(
@@ -72,6 +75,7 @@ def test_address_model():
     """
     Tests address model :
         - Expected address printing format
+
     :return: none
     """
     address = Address.objects.create(
@@ -93,6 +97,7 @@ def test_letting_detail_url():
     Tests url for showing a lettings details :
         - Created lettings path corresponds to expected value
         - View name used in the path corresponds to expected view
+
     :return: none
     """
     address = Address.objects.create(
@@ -119,6 +124,7 @@ def test_lettings_detail_view(client):
         - Status code 200
         - Expected content inside request
         - Template used in render corresponds to expected template
+
     :param client: client used for mocking http requests
     :return: none
     """
@@ -151,6 +157,7 @@ def test_404(client):
     Tests error 500 personalized page
         - Status code 500
         - Personalized image found in request content
+
     :return: none
     """
     response = client.get("/lettings/1/")

@@ -13,11 +13,13 @@ profiles.apps
 
    
    
-   .. rubric:: Classes
+    .. rubric:: Classes
 
-   .. autosummary::
-   
-      ProfilesConfig
+    .. autosummary::
+        :toctree: profiles
+        :recursive:
+
+        ProfilesConfig
    
    
 
