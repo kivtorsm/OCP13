@@ -14,6 +14,12 @@ from . import views
 
 
 def trigger_error(request):
+    """
+    Function called but sentry-debug url and used to test sentry connexion.
+
+    :param request: http request
+    :return: none
+    """
     division_by_zero = 1 / 0    # noqa: F841
 
 
